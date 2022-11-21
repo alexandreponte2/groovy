@@ -5,6 +5,7 @@ pipeline {
   }
 parameters {
     string(name: 'SECRET_ID', defaultValue: 'default', description: 'Secret Name.')
+    string(name: 'USER_ID', defaultValue: 'default', description: 'Secret Name.')
     string(name: 'INSTANCE_ID', defaultValue: 'default', description: 'Project Name passar entre aspas duplas.')
     string(name: 'PROJECT_ID', defaultValue: 'default', description: 'Project Name passar entre aspas duplas.')
 
@@ -25,7 +26,7 @@ parameters {
 
           echo $BUILD_ID
 
-          gcloud sql users set-password root --host=% --instance=$INSTANCE_ID --password=$BUILD_ID
+          gcloud sql users set-password $USER_ID --host=% --instance=$INSTANCE_ID --password=$BUILD_ID
 
 
 
